@@ -1,0 +1,123 @@
+.container {
+	position: relative;
+}
+// 小程序头部兼容
+.mp-search-box {
+	width: 100%;
+	height: 200upx;
+	background: #ffffff;
+	.head {
+		height: 88rpx;
+		display: flex;
+		justify-content: space-between;
+		box-sizing: border-box;
+		align-items: center;
+		padding: 0 22upx;
+		.location {
+			text {
+				font-size: 26rpx;
+				line-height: 88rpx;
+				margin-left: 10rpx;
+			}
+		}
+		.inp {
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			height: 60upx;
+			width: 568upx;
+			background: #f5f5f5;
+			border-radius: 10upx;
+			margin: 0 10rpx;
+			flex: 1;
+			text {
+				margin: 0 20upx 0 15upx;
+			}
+			.search {
+				margin: 0 20rpx;
+				height: 35rpx;
+				width: 35rpx;
+			}
+			input {
+				display: block;
+				height: 100%;
+				line-height: 60rpx;
+				font-size: 24upx;
+				font-family: PingFangSC-Regular;
+				font-weight: 400;
+				color: rgba(204, 204, 204, 1);
+			}
+		}
+	}
+	.nav {
+		display: flex;
+		align-items: center;
+		white-space: nowrap;
+		line-height: 60rpx;
+		overflow-x: scroll;
+		-webkit-overflow-scrolling: touch;
+		white-space: nowrap;
+		text {
+			position: relative;
+			display: inline-block;
+			margin: 0px 20rpx;
+			color: #999999;
+			font-size: 26rpx;
+			height: 60rpx;
+		}
+		.active {
+			position: relative;
+			color: #000;
+		}
+		.active::before {
+			display: block;
+			content: '';
+			position: absolute;
+			width: 60rpx;
+			height: 6rpx;
+			bottom: 0;
+			left: 50%;
+			transform: translate(-50%, 0%);
+			background: red;
+		}
+	}
+	.nav::-webkit-scrollbar {
+		display: none;
+	}
+}
+// 头部轮播
+.carousel-section {
+	position: absolute;
+	top: 160rpx;
+	left: 50%;
+	width: 736rpx;
+	height: 330rpx;
+	transform: translate(-50%, 0%);
+	.swiper-box {
+		height: 100%;
+		.wx-swiper-dot {
+			bottom: 6upx;
+			width: 12upx;
+			display: inline-flex;
+			margin-left: 7upx;
+			height: 12upx;
+			justify-content: space-between;
+		}
+		image {
+			width: 100%;
+			height: 330rpx;
+			overflow: hidden;
+		}
+	}
+	.swiper-box .wx-swiper-dot::before {
+		content: '';
+		flex-grow: 1;
+		background: rgba(255, 255, 255, 0.3);
+		border-radius: 50%;
+	}
+	.swiper-box .wx-swiper-dot-active::before {
+		background: #fff;
+	}
+}
+
+

@@ -1,0 +1,583 @@
+	
+	.container{
+		position: relative;
+	}
+	// 小程序头部兼容
+		.mp-search-box{
+			width: 100%;
+			height:200upx;
+			background: #FFFFFF;
+			.head{
+				height: 88rpx;
+				display: flex;
+				justify-content: space-between;
+				box-sizing: border-box;
+				align-items: center;
+				padding: 0 22upx;
+				.location{
+					text{
+						font-size: 26rpx;
+						line-height: 88rpx;
+						margin-left: 10rpx;
+					}
+				}
+				.inp{
+					display: flex;
+					align-content: center;
+					height: 60upx;
+					width: 568upx;
+					background: #C0C0C0;
+					border-radius: 10upx;
+					margin: 0 10rpx;
+					flex: 1;
+					text{
+						margin: 0 20upx 0 15upx;
+					}
+					.search{
+						color: #333;
+						font-size: 30upx;
+						line-height: 60upx;
+						margin-left: 25upx;
+					}
+					input{
+						display:block;
+						height: 100%;
+						line-height: 60rpx;
+						font-size:24upx;
+						font-family:PingFangSC-Regular;
+						font-weight:400;
+						color:rgba(204,204,204,1);
+					}
+				}
+			}
+			.nav{
+				display: flex;
+				align-items: center;
+				white-space: nowrap;
+				line-height:26rpx;
+				overflow-x: scroll;
+				-webkit-overflow-scrolling: touch;
+				white-space: nowrap;
+				text{
+					position: relative;
+					display: inline-block;
+					margin:0px 20rpx;
+					color: #CCCCCC;
+					font-size: 26rpx;
+					height: 40rpx;
+				}
+				.active{
+					position: relative;
+				}
+				.active::before{
+					display: block;
+					content: "";
+					position: absolute;
+					width: 20rpx;
+					height: 4rpx;
+					bottom: 0;
+					left: 50%;
+					transform: translate(-50%,0%);
+					background: #fff;
+				}
+			}
+			.nav::-webkit-scrollbar {
+				display:none
+				}
+		}
+	// 头部轮播	
+	.carousel-section{
+		position: absolute;
+		top: 130rpx;
+		left:50%;
+		width: 736rpx;
+		height: 286upx;
+		transform: translate(-50%,0%);
+		.swiper-box{
+			height: 100%;
+			.wx-swiper-dot{
+				bottom: 6upx;
+			    width:12upx;
+			    display: inline-flex;
+				margin-left: 7upx;
+			    height: 12upx;
+			    justify-content:space-between;
+			}
+			image{
+				width: 100%;
+				height: 286upx;
+				overflow: hidden;
+			}
+		}
+		.swiper-box .wx-swiper-dot::before{
+		    content: '';
+		    flex-grow: 1;
+			background: rgba(255,255,255,.3 );
+		    border-radius: 50%;
+		}
+		.swiper-box .wx-swiper-dot-active::before{
+		    background:#fff;  
+		}
+		
+	}	
+	
+	
+	// 分类
+	.navlist{
+		height: 100%;
+		width: 710upx;
+		margin: 0 auto;
+		margin-top:223rpx;
+		display: flex;
+		flex-wrap: wrap;
+		.list{
+			width: 100%;
+			margin-bottom:17rpx;
+			background: #fff;
+			border-radius: 10rpx;
+			padding-top: 20rpx;
+			.goto{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				text-align: center;
+				display: inline-block;
+				width: calc(100%/5);
+				margin-bottom: 20rpx;
+			}
+			image{
+				width: 96upx;
+				height: 96upx;
+				margin-bottom: 5upx;
+				display: block;
+				margin: 0 auto;
+			}
+			text{
+				width: 100%;
+				font-size: 24upx;
+				margin-top:15upx;
+				color: #333;
+			}
+		}
+	}
+	
+	
+	
+	// 定制计划
+	.customplanad{
+		// position: absolute;
+		// top: 130rpx;
+		// left:50%;
+		width: 734rpx;
+		height: 202upx;
+		// transform: translate(-50%,0%);
+		text-align: center;
+		margin: 0 auto;
+		image{
+			width: 734rpx;
+			height:202rpx;
+		}
+		.ad-box{
+			height: 100%;
+		}
+		.ad-box .wx-swiper-dot::before{
+		    content: '';
+		    flex-grow: 1;
+			// background: rgba(255,255,255,.3 );
+		    border-radius: 50%;
+		}
+		.ad-box .wx-swiper-dot-active::before{
+		    background:#fff;  
+		}
+	}
+	//帮助中心，库房视频
+	.ad{
+		height: 100%;
+		margin-bottom:20upx;	
+		width: 710upx;
+		box-sizing: border-box;
+		// padding: 0upx 20upx 20upx 20upx;
+		margin:0 auto;
+		margin-top: 8rpx;
+		// padding-bottom: 10rpx;
+		margin-bottom: 20rpx;
+		display: flex;
+		justify-content: space-between;
+		.activity{
+			// width: 100%;
+			width: 344rpx;
+			image{
+				width: 344rpx;
+				height:146rpx;
+			}
+		}
+		}
+	// page公用样式
+	.page{
+		.title{
+			height: 88upx;
+			background: #f5f5f5;
+			line-height: 88rpx;
+			box-sizing: border-box;
+			padding-left: 20rpx;
+			// padding-top: 10rpx;
+			image{
+				width: 22upx;
+				height: 26upx;
+				margin-right: 10rpx;
+			}
+			text{
+				font-size:34rpx;
+				font-weight:600;
+				color:rgba(51,51,51,1);
+				line-height:48rpx;
+			}
+			.fr{
+				text{
+					font-size: 30rpx;
+					color: #666;
+					font-weight:400;
+				}
+				
+			}
+		}
+	}
+	// 年龄分段
+	.pageage{
+		.agemain{
+			box-sizing: border-box;
+			padding: 0 20upx;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 15rpx;
+			.main{
+				position: relative;
+				image{
+					display: block;
+					width: 162upx;
+					height: 88upx;
+				}
+				text{
+					position: absolute;
+					top: 0;
+					left: 0;
+					z-index: 2;
+					width: 162upx;
+					display: block;
+					color: #fff;
+					font-size: 34upx;
+					text-align: center;
+					line-height: 100upx;
+				}
+			}
+		}
+	}
+	// 书单推荐
+	.page_expert,.pagemaster{
+		.page_expert_main{
+			display: flex;
+			align-items: center;
+			// white-space: nowrap;
+			line-height: 26rpx;
+			flex-wrap: nowrap;
+			// overflow-x: scroll;
+			// -webkit-overflow-scrolling: touch;
+			width: 100%;
+			>text{
+				position: relative;
+				margin-left: 20rpx;
+				color: #fff;
+				font-size: 26rpx;
+			}
+			.active{
+				position: relative;
+			}
+			.active:before{
+				position: absolute;
+				width: 10rpx;
+				height: 4rpx;
+				bottom: 0;
+				left: 0;
+				background: #fff;
+			}
+			&::-webkit-scrollbar {
+				display:none
+				}
+		}
+		.page_expert_main{
+			display: flex;
+			align-items: center;
+			height: 289rpx;
+			margin-bottom: 20rpx;
+			.booklist{
+				// display: flex;
+				// flex-direction: column;
+				// align-items: center;
+				width: 212rpx;
+				height: 289rpx;
+				position: relative;
+				text-align: center;
+				background: #fff;
+				margin-left: 20rpx;
+				border-radius:10rpx;
+				flex-shrink: 0;   //flex 导致子元素宽度无效
+				box-sizing: border-box;
+				padding: 20rpx 0;
+				image{
+					width: 118upx;
+					height: 118upx;
+					display: block;
+					margin: 0  auto;
+					margin-bottom: 20rpx;
+				}
+				.infopag{
+					display: flex;
+					align-items:center;
+					height: 110rpx;
+					flex-direction: column;
+					justify-content: space-between;
+					.experTitle{
+						font-size: 22rpx;
+						color: #666;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						-ms-text-overflow: ellipsis;
+						white-space: nowrap;
+					}
+					.expertintro{
+						font-size: 22rpx;
+						color: #c3c3c3;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						-ms-text-overflow: ellipsis;
+						white-space: nowrap;
+					}
+					button{
+						display:block;
+						width:128rpx;
+						line-height: 42rpx;
+						background: #fff;
+						padding: 0;
+						font-size: 20rpx;
+						color: #fb8553;
+						text-align: center;
+						border: 2rpx solid #fb8553;
+						border-radius:50rpx;
+					}
+				}
+				.mastertitle{
+					font-size: 26rpx;
+				}
+				.masterpic{
+					border-radius: 50%;
+					margin: 0 auto;
+					margin-bottom: 20rpx;
+				}
+				
+				
+			}
+			
+		}
+	}
+	// 热门推荐
+	.pagehot{
+		background: #f5f5f5;
+		.hotmain{
+			box-sizing: border-box;
+			padding: 20upx;
+			padding-top: 0;
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			.hot_main_con{
+				background: #fff;
+				width: 345upx;
+				box-sizing: border-box;
+				padding: 20upx;
+				margin-bottom: 20upx;
+				border-radius: 10rpx;
+				.bookimg{
+					display: block;
+					margin: 0 auto;
+					width: 292upx;
+					height: 292upx;
+					margin-top: 13upx;
+				}
+				.bookinfo{
+					position: relative;
+					>text{
+						width:320upx;
+						display: block;
+						font-size: 30upx;
+						color:rgba(51,51,51,1);
+						margin-top: 29upx;
+						margin-bottom: 8upx;
+						overflow: hidden;
+						text-overflow:ellipsis;//文本溢出显示省略号
+						white-space:nowrap;//文本不会换行（单行文本溢出）
+					}
+					.label{
+						>text{
+							display: inline-block;
+							font-size: 22upx;
+							margin-right:10upx; 
+							padding: 5upx 10upx;
+							color: #666;
+							background:rgba(255,255,255,1);
+							border:1rpx solid rgba(153,153,153,1)
+						
+						}
+					}
+					image{
+						position: absolute;
+						bottom: 0;
+						right: 0;
+						width: 47upx;
+						height: 47upx;
+						
+					}
+				}
+			}
+		}
+	}
+	// 弹框
+	.modal{
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto;
+		width: 200upx;
+		height: 200upx;
+		background: #333;
+		border-radius: 20upx;
+		opacity: .8;
+	}
+	.classon{
+		font-size: 26rpx;
+		color: rgba(153,153,153,1);
+		text-align: center;
+	}
+	// 小火箭返回顶部
+	.to-top{
+		position: fixed;
+		bottom:150rpx;
+		right: 13rpx;
+		width:84rpx;
+		height:84rpx;
+		border-radius: 50%;
+		background: #fff;
+		box-shadow:0rpx 2rpx 8rpx 0rpx rgba(255,130,75,0.3);
+		border:2rpx solid rgba(255,205,120,1);
+		image{
+			width: 38rpx;
+			height: 57rpx;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+		}
+	}
+	.hide{
+		display: none;
+	}
+	// @import '../../static/css/index.scss';
+
+	.voimg {
+		width: 40rpx;
+		height: 40rpx;
+		margin-left: 20rpx;
+	}
+
+	.service {
+		position: fixed;
+		top: 70%;
+		right: 0;
+		background-color: #FF824B;
+		width: 76rpx;
+		height: 76rpx;
+		right: 0;
+		z-index: 999;
+		background: linear-gradient(135deg, rgba(254, 163, 100, 1) 0%, rgba(250, 108, 58, 1) 100%);
+		border-radius: 50rpx 0px 0px 50rpx;
+
+		.bjse {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 57rpx;
+			height: 57rpx;
+			border-radius: 50%;
+			background: #fff;
+			transform: translate(-50%, -50%);
+
+			image {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				width: 38rpx;
+				height: 38rpx;
+				z-index: 99;
+			}
+		}
+
+	}
+
+	.head {
+		position: relative;
+	}
+
+	.hasno {
+		position: absolute;
+		top: 20rpx;
+		right: 20rpx;
+		width: 20rpx;
+		height: 20rpx;
+		border-radius: 50%;
+		background: red;
+	}
+
+	.message {
+		position: fixed;
+		height: 100vh;
+		width: 100vw;
+		top: 0;
+		left: 0;
+		background: rgba(0, 0, 0, .6);
+
+		.close {
+			position: absolute;
+			width: 30rpx;
+			height: 30rpx;
+			top: 25%;
+			right: 50rpx;
+		}
+
+		.con {
+			position: absolute;
+			top: 30%;
+			left: 50%;
+			width: 670rpx;
+			height: 442rpx;
+			margin-left: -335rpx;
+			border-radius: 24rpx;
+			z-index: 999;
+			display: flex;
+			justify-content: space-between;
+
+			.gift {
+				width: 330rpx;
+				height: 442rpx;
+				margin-right: 10rpx;
+			}
+
+			.free,
+			.addvip {
+				width: 330rpx;
+				height: 216rpx;
+			}
+		}
+	}
