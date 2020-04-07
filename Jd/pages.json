@@ -1,9 +1,9 @@
 {
 	"pages": [
 		{
-		    "path" : "pages/zujian/zujian",
-		    "style" : {
-				"navigationStyle": "custom"
+			"path": "pages/jdt/jdt",
+			"style": {
+				"navigationBarTitleText": "进度条"
 			}
 		},
 		{
@@ -13,6 +13,13 @@
 				"navigationStyle": "custom"
 			}
 		},
+		{
+		    "path" : "pages/zujian/zujian",
+		    "style" : {
+				"navigationStyle": "custom"
+			}
+		},
+	
 		{
 			"path": "pages/search/search",
 			"style": {

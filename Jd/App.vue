@@ -17,7 +17,7 @@ export default {
 /* #ifdef MP-TOUTIAO */
 @font-face {
 	font-family: uniicons;
-	src: url('/static/uni.ttf');
+	src: url('/static/yticon.ttf');
 }
 /* #endif */
 	

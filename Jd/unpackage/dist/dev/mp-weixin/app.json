@@ -1,6 +1,10 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/jdt/jdt",
+    "pages/index/index",
+    "pages/zujian/zujian",
+    "pages/search/search",
+    "pages/Receive/Receive"
   ],
   "subPackages": [],
   "window": {

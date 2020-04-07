@@ -1,5 +1,7 @@
 {
-  "navigationBarTitleText": "uni-ui基础项目",
+  "navigationBarTitleText": "京东",
   "navigationStyle": "custom",
-  "usingComponents": {}
+  "usingComponents": {
+    "catelist": "/components/catelist"
+  }
 }

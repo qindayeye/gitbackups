@@ -1,0 +1,1 @@
+<view>会员计划<view class="jdtbg"><block wx:for="{{listVip}}" wx:for-item="item" wx:for-index="index" wx:key="*this"><view class="jdt" style="{{(item.style)}}" title="{{item.name}}"></view></block></view></view>
