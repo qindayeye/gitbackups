@@ -9,7 +9,12 @@
 	    ,{
             "path" : "pages/vote/vote",
             "style" : {
-				"navigationBarTitleText": "最佳公益奖"
+				"navigationBarTitleText": "瀑布流实现"
+			}
+        },{
+            "path" : "pages/vote/vote2",
+            "style" : {
+				"navigationBarTitleText": "multi-column实现"
 			}
         }
         ,{
@@ -38,8 +43,8 @@
 		"selectedColor": "rgba(0,200,105,1)",
 		"list": [{
 				"pagePath": "pages/index/index",
-				// "iconPath": "static/home.png",
-				// "selectedIconPath": "static/homeactive.png",
+				"iconPath": "static/home.png",
+				"selectedIconPath": "static/homeactive.png",
 				"text": "首页"
 			},
 			{
