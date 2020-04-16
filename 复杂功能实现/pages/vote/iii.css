@@ -1,0 +1,13 @@
+.hominc{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.item{
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    
+}
