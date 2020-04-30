@@ -1,0 +1,8 @@
+<template name="foot">
+    <view class="commont-foot">
+        <view class="icon-foot">
+            <image src="../../images/logo.png"></image>
+        </view>
+        <view class="t-c cont f-22">启网网络提供技术支持</view>
+    </view>
+</template>

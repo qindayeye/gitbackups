@@ -1,0 +1,145 @@
+<view class="container">
+    <view class="common-header-xian"></view>
+    <form bindreset="formReset" bindsubmit="formSubmit">
+        <view class="page__input">
+            <view class="weui-cells">
+                <view class="weui-cell weui-cell_switch b-f" style="padding:5px 15px">
+                    <view class="weui-cell__bd f-30">自营产品</view>
+                    <view class="weui-cell__ft">
+                        <switch bindchange="switch2Change" color="#ec5151"></switch>
+                    </view>
+                </view>
+                <view bindtap="translate" class="weui-cell weui-cell_access b-f">
+                    <view class="weui-cell__bd f-30">配送地区</view>
+                    <view class="weui-cell__ft">
+                        <text class="col-7 fr f-30" style="margin:0 20rpx 0 0">
+                            <block wx:if="{{province!=''&&city!=''}}">{{province}} {{city}} {{county}}</block>
+                            <block wx:else>选择省、市、区 </block>
+                        </text>
+                    </view>
+                </view>
+            </view>
+            <view class="weui-cells m-top20">
+                <view class="weui-cell b-f">
+                    <view class="weui-cell__bd f-30">价格区间
+          </view>
+                    <view class="weui-cell__ft f-30">{{pricenName}}</view>
+                </view>
+                <view class="weui-cell tab-list b-f  cont-box  {{showPrice?'screen_hide':''}}">
+                    <view class="override_price dis-box m-top10">
+                        <view class="box-flex t-c">
+                            <view style="background:#f7f7f7;border-radius:5rpx;padding:6rpx">
+                                <input class="f-28" confirmType="" name="price_min" placeholder="最低价" type="text" value="{{price_min}}"></input>
+                            </view>
+                        </view>
+                        <view style="padding:0 30rpx">-</view>
+                        <view class="box-flex t-c">
+                            <view style="background:#f7f7f7;border-radius:5rpx;padding:6rpx">
+                                <input class="f-28" confirmType="" name="price_max" placeholder="最高价" type="text" value="{{price_max}}"></input>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="weui-cells m-top20">
+                <view bindtap="onChangeShowState" class="cont-box weui-cell  b-f goods-property-box screen-goods-property-box ">
+                    <view class="weui-cell__bd f-30">品牌</view>
+                    <text class="col-6 f-28  fr cont" wx:if="{{brandName==''}}">全部</text>
+                    <text class="col-m f-28  fr cont" wx:else>{{brandName}}</text>
+                    <view class="goods-property-jianTou">
+                        <text class="iconfont icon-msnui-rightmini  user-orderJtou-1 {{showView?'user-orderJtou-2':''}}"></text>
+                    </view>
+                </view>
+                <view class=" weui-cell__ft cate-tab b-f b-t show {{showView?'hide':''}}">
+                    <view class="tab-list">
+                        <radio-group bindchange="radioChange" class="radio-group">
+                            <label class="radio">
+                                <view class="list dis-box" data-id="{{item.id}}">
+                                    <view class="box-flex">全部</view>
+                                    <view class="box-flex">
+                                        <radio checked="checked" class="fr" color="#ec5151" value=""></radio>
+                                    </view>
+                                </view>
+                            </label>
+                            <label class="radio" wx:for="{{brandsCate}}" wx:key="brandsCate">
+                                <view class="list dis-box" data-id="{{item.id}}">
+                                    <view class="box-flex">{{item.brand_name}} </view>
+                                    <view class="box-flex">
+                                        <radio checked="{{item.checked}}" class="fr" color="#ec5151" value="{{item.brand_name}}"></radio>{{item.value}}
+                  </view>
+                                </view>
+                            </label>
+                        </radio-group>
+                    </view>
+                </view>
+                <view bindtap="onChangeSize" id="{{item.id}}" wx:for="{{filterData}}" wx:key="filterData">
+                    <view class="cont-box weui-cell b-f goods-property-box screen-goods-property-box" wx:if="{{item.filter!=''}}">
+                        <view class="weui-cell__bd f-30">{{item.filter_name}}</view>
+                        <text class="col-6 f-28  fr cont" wx:if="{{item.radio_name==''}}">全部</text>
+                        <text class="col-m f-28  fr cont" wx:else>{{item.radio_name}}</text>
+                        <view class="goods-property-jianTou">
+                            <text class="iconfont icon-msnui-rightmini  user-orderJtou-1 {{numHide==item.id?'':'user-orderJtou-2'}}"></text>
+                        </view>
+                    </view>
+                    <view class="cate-tab b-f b-t  {{numHide==item.id?'':'hide'}}">
+                        <view class="tab-list">
+                            <radio-group bindchange="radioChangeSize" class="radio-group">
+                                <label class="radio" wx:if="{{item.filter!=''}}">
+                                    <view class="list dis-box" data-id="{{item.id}}">
+                                        <view class="box-flex">全部</view>
+                                        <view class="box-flex">
+                                            <radio checked="checked" class="fr" color="#ec5151" value=""></radio>
+                                        </view>
+                                    </view>
+                                </label>
+                                <label class="radio" wx:for="{{item.filter}}" wx:key="brandsCate">
+                                    <view class="list dis-box" data-id="{{item.id}}">
+                                        <view class="box-flex">{{item}} </view>
+                                        <view class="box-flex">
+                                            <radio checked="{{item.checked}}" class="fr" color="#ec5151" value="{{item}}"></radio>
+                                        </view>
+                                    </view>
+                                </label>
+                            </radio-group>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="cont-box">
+            <view class="dis-box m-top20 screen_btn">
+                <view class="box-flex list">
+                    <button disabled="{{disabled}}" formType="reset" hoverClass="other-button-hover" loading="{{loading}}" plain="{{plain}}" size="{{defaultSize}}" type="default"> 重置 </button>
+                </view>
+                <view class="box-flex list">
+                    <button disabled="{{disabled}}" formType="submit" loading="{{loading}}" plain="{{plain}}" size="{{primarySize}}" type="primary"> 确认 </button>
+                </view>
+            </view>
+        </view>
+        <view animation="{{animation}}" bindtap="hiddenFloatView" class="animation-element-wrapper" data-id="444" style="visibility:{{show?'visible':'hidden'}}">
+            <view catchtap="nono" class="animation-element">
+                <text catchtap="hiddenFloatView" class="address-text left-bt" data-id="555">取消</text>
+                <text catchtap="checkFloatView" class="address-text right-bt" data-id="666">确定</text>
+                <view class="line"></view>
+                <picker-view bindchange="bindChange" catchtap="nono" indicatorStyle="height: 50rpx;" value="{{value}}">
+                    <picker-view-column>
+                        <view wx:for="{{provinces}}" wx:for-item="sheng">
+              {{sheng.region_name}}
+            </view>
+                    </picker-view-column>
+                    <picker-view-column>
+                        <view wx:for="{{citys}}">
+              {{item.region_name}}
+            </view>
+                    </picker-view-column>
+                    <picker-view-column>
+                        <view wx:for="{{countys}}">
+              {{item.region_name}}
+            </view>
+                    </picker-view-column>
+                </picker-view>
+            </view>
+        </view>
+        <view class="bargain-commont-bg hide{{showViewMol?'show':''}}"></view>
+    </form>
+</view>

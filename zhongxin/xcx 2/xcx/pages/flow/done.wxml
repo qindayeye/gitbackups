@@ -1,0 +1,23 @@
+<view class="container">
+    <view class="common-header-xian"></view>
+    <view class="done-header">
+        <view class="money-icon">￥</view>
+        <text class="f-26 t-c col-7">付款金额</text>
+        <text class="f-34 col-m t-c">{{donePrice.order_amount}}</text>
+    </view>
+    <view class="padding-box b-f">
+        <view class="dis-flex done-list" wx:if="{{doneList.order_sn}}">
+            <text class="flex-five done-list-left col-7">订单号</text>
+            <text class="flex-five done-list-right">{{doneList.order_sn}}</text>
+        </view>
+    </view>
+    <view class="padding-box m-top20 ">
+        <form bindsubmit="formSubmit" reportSubmit="true" style="width:100%;display:block">
+            <button data-id="{{order.order_id}}" formType="submit" loading="{{loading}}" plain="{{plain}}" size="{{primarySize}}" type="primary"> 微信支付 </button>
+        </form>
+        <view bindtap="userBtn" class="cart-tab-item-btn f-30">
+            <button bindtap="orderDetail" class="m-top20" data-index="{{index}}" disabled="{{disabled}}" hoverClass="other-button-hover" loading="{{loading}}" plain="{{plain}}" size="{{defaultSize}}" type="default"> 去用户中心 </button>
+        </view>
+    </view>
+</view>
+<loading hidden="{{hidden}}">加载中…</loading>

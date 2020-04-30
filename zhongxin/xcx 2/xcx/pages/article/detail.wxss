@@ -1,0 +1,9 @@
+.article-detail .admin {
+    color: #607fa6;
+    margin-left: 10rpx;
+}
+
+.article-detail .cont {
+    margin-top: 40rpx;
+    line-height: 1.5;
+}

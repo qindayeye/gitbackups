@@ -1,0 +1,178 @@
+<block wx:if="{{index!=undefined}}">
+    <view class="container {{scrollTop>200?'topnav':''}}">
+        <scroll-view class="group-tab col-3" scrollLeft="{{scrollLeft}}" scrollX="true">
+            <view bindtap="swichNav" class="tab-item {{currentTab==0?'active':''}}" data-current="0" data-index="home">全部</view>
+            <view bindtap="swichNav" class="tab-item {{currentTab==item.tc_id?'active':''}}" data-current="{{item.tc_id}}" data-index="{{index}}" wx:for="{{index.team_categories}}" wx:key="team_categories">
+        {{item.name}}
+      </view>
+        </scroll-view>
+        <scroll-view bindscroll="scroll" class="cont-bot" scrollTop="{{scrollTop}}" scrollY="true" style="margin-top:80rpx; position:absolute; top:0; left:0; right:0; bottom:0;">
+            <view class="index-banner p-r b-f" wx:if="{{index.banner!=''}}">
+                <swiper autoplay="{{autoplay}}" class="swiper-box " duration="1000" indicatorDots="{{indicatorDots}}" interval="4000">
+                    <navigator hoverClass="navigator-hover" url="{{item.link}}" wx:for="{{index.banner}}" wx:key="banner">
+                        <swiper-item>
+                            <image class="slide-image" src="{{item.pic}}"></image>
+                        </swiper-item>
+                    </navigator>
+                </swiper>
+            </view>
+            <view class="index-activity-list dis-box m-top18 b-f " wx:if="{{index.banner_bottom!=''}}">
+                <view class="right li" wx:for="{{index.banner_bottom}}" wx:key="activityRight">
+                    <view class="box-flex right-bottom">
+                        <navigator hoverClass="navigator-hover" url="{{item.link}}">
+                            <image mode="aspectFit" src="{{item.pic}}"></image>
+                        </navigator>
+                    </view>
+                </view>
+            </view>
+            <block wx:if="{{index.ad_hot_left.pic!=''||index.ad_hot_right[0]!=''}}">
+                <block wx:if="{{index.ad_hot_left.pic||index.ad_hot_right[0]}}">
+                    <view class="dis-box b-f goods-property-box bargain-play m-top20">
+                        <view class="box-flex col-3 f-31 f-w">热门活动</view>
+                    </view>
+                    <view class="index-activity-list dis-box m-top18 b-f">
+                        <view class=" flex-box left">
+                            <image src="{{index.ad_hot_left[0].pic}}"></image>
+                        </view>
+                        <view class=" right flex-box">
+                            <view class="right-bottom" wx:for="{{index.ad_hot_right}}" wx:key="activityRight">
+                                <navigator hoverClass="navigator-hover" url="{{item.link}}">
+                                    <image mode="aspectFit" src="{{item.pic}}"></image>
+                                </navigator>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </block>
+            <block wx:if="{{index.ad_hot_bottom!=''}}">
+                <view class="index-banner b-f m-top20" wx:if="{{index.ad_hot_bottom}}">
+                    <swiper autoplay="{{autoplay}}" class="banner-box swiper-box " duration="1200" indicatorDots="{{indicatorDots}}" interval="3600" style="height:225rpx">
+                        <navigator hoverClass="navigator-hover" url="{{item.link}}" wx:for="{{index.ad_hot_bottom}}" wx:key="banner">
+                            <swiper-item>
+                                <image class="slide-image" src="{{item.pic}}"></image>
+                            </swiper-item>
+                        </navigator>
+                    </swiper>
+                </view>
+            </block>
+            <block wx:if="{{index.ad_best_left[0].pic&&index.ad_best_right}}">
+                <view class="dis-box b-f goods-property-box bargain-play m-top20 ">
+                    <view class="box-flex col-3 f-31 f-w">精选商品</view>
+                </view>
+                <view class="index-activity-list dis-box m-top18 b-f">
+                    <view class="left flex-box">
+                        <image src="{{index.ad_best_left[0].pic}}"></image>
+                    </view>
+                    <view class="right flex-box">
+                        <view class="right-bottom" wx:for="{{index.ad_best_right}}" wx:key="activityRight">
+                            <navigator hoverClass="navigator-hover" url="{{item.link}}">
+                                <image mode="aspectFit" src="{{item.pic}}"></image>
+                            </navigator>
+                        </view>
+                    </view>
+                </view>
+            </block>
+            <view class="group-channel-list cont-box b-f dis-box {{index.banner==''?'m-top-height':''}}" wx:if="{{index.team_categories_child}}">
+                <view class="box-flex li" wx:for="{{index.team_categories_child}}" wx:key="team_categories_child">
+                    <view bindtap="groupChannel" class="img" data-index="{{index}}">
+                        <image mode="aspectFit" src="{{item.tc_img}}"></image>
+                    </view>
+                    <view class="f-28 col-3 t-c m-top4">{{item.name}}</view>
+                </view>
+            </view>
+            <view class="index-activity-list dis-box group-list m-top20 b-f" wx:if="{{index.ads_left&&index.ads_right}}">
+                <view class="right flex-box">
+                    <view class="right-bottom" wx:for="{{index.ads_left}}" wx:key="activityRight">
+                        <navigator hoverClass="navigator-hover" url="{{item.link}}">
+                            <image mode="aspectFit" src="{{item.pic}}"></image>
+                        </navigator>
+                    </view>
+                </view>
+                <view class="right flex-box">
+                    <view class="right-bottom" wx:for="{{index.ads_right}}" wx:key="activityRight">
+                        <navigator hoverClass="navigator-hover" url="{{item.link}}">
+                            <image mode="aspectFit" src="{{item.pic}}"></image>
+                        </navigator>
+                    </view>
+                </view>
+            </view>
+            <view class="group-list m-top20">
+                <view bindtap="siteDetail" class=" cont-box dis-box b-f item " data-index="{{index}}" wx:for="{{list}}" wx:key="{{index}}">
+                    <view class="user-left">
+                        <image class="goodsImg" mode="aspectFit" src="{{item.goods_thumb}}"></image>
+                    </view>
+                    <view class="box-flex-goods user-right p-r">
+                        <text class="f-30 col-3 twolist-hidden">{{item.goods_name}}</text>
+                        <view class="price col-m f-32">
+                            <text class="group-num f-22 col-m">{{item.team_num}}人团</text>{{item.team_price}}</view>
+                        <text class="del f-22" style="padding:0">原价{{item.shop_price}}</text>
+                        <view class="bargain-btn ">去开团</view>
+                    </view>
+                </view>
+            </view>
+            <view class="title-footer p-r" wx:if="{{list!=''}}">
+                <text class="f-24 col-9  cont">我是有底线的</text>
+                <view class="hr"></view>
+            </view>
+        </scroll-view>
+        <view bindtap="goTop" class="widget-goTop" wx:if="{{floorstatus}}">
+            <text class="iconfont icon-fanhuidingbu"></text>
+        </view>
+    </view>
+    <view class="filter-menu {{nav_select?'active':''}}">
+        <view class="filter-menu-list ts-5">
+            <custom-ul>
+                <custom-li bindtap="nav" data-index="home">
+                    <text class="iconfont icon-home"></text>
+                </custom-li>
+                <custom-li bindtap="nav" data-index="fenlei">
+                    <text class="iconfont icon-fenlei"></text>
+                </custom-li>
+                <custom-li bindtap="nav" data-index="cart">
+                    <text class="iconfont icon-cart"></text>
+                </custom-li>
+                <custom-li bindtap="nav" data-index="profile">
+                    <text class="iconfont icon-profile"></text>
+                </custom-li>
+                <custom-li class="w"></custom-li>
+            </custom-ul>
+        </view>
+        <view bindtap="commonNav" class="filter-menu-title"></view>
+    </view>
+    <view class="commont-fixed-footer t-c dis-box ">
+        <view class="box-flex-bootom li active">
+            <image mode="aspectFit" src="../../images/nav_group_active.png"></image>
+            <view class="f-22">拼团首页</view>
+        </view>
+        <view class="box-flex-bootom li">
+            <navigator hoverClass="none" openType="redirect" url="../group/rank">
+                <image mode="aspectFit" src="../../images/rank.png"></image>
+                <view class="f-22">排行</view>
+            </navigator>
+        </view>
+        <view class="box-flex-bootom li">
+            <navigator hoverClass="none" openType="redirect" url="../group/order/index">
+                <image mode="aspectFit" src="../../images/user.png"></image>
+                <view class="f-22">我的拼团</view>
+            </navigator>
+        </view>
+    </view>
+    <swiper autoplay="true" circular="true" class="swiper-radio" duration="1000" interval="2000" style="height:80px;margin-top:80rpx;" vertical="true" wx:if="{{index_user.error!=1}}">
+        <swiper-item wx:for="{{index_user}}" wx:key="index_user">
+            <view class="dis-box index-fixed-box js-item-hidden">
+                <view class="index-fixed-imgbox">
+                    <view class="index-header-img item01">
+                        <image mode="aspectFill" src="{{item.user_picture}}"></image>
+                    </view>
+                </view>
+                <view class="box-flex onelist-hidden">
+                    <view class="title">
+                        <text class="item02">{{item.user_name}}</text>下单喽
+                <text class="col-9 item03">{{item.seconds}}</text>
+                    </view>
+                </view>
+            </view>
+        </swiper-item>
+    </swiper>
+</block>
+<loading hidden="{{hidden}}" wx:else>加载中…</loading>

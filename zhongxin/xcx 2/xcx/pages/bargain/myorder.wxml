@@ -1,0 +1,53 @@
+<view class="container p-bottom">
+    <view class="common-header-xian"></view>
+    <view wx:if="{{list!=''}}">
+        <view class="category-list arrange">
+            <navigator class="list b-f" hoverClass="none" url="../bargain/goods?objectId={{item.id}}" wx:for="{{list}}" wx:key="list">
+                <view class="left">
+                    <view class="img">
+                        <image class="goodsImg" mode="aspectFit" src="{{item.goods_thumb}}"></image>
+                    </view>
+                </view>
+                <view class="right">
+                    <view class="cont">
+                        <text class="f-30 title twolist-hidden m-top10">{{item.goods_name}}</text>
+                        <view class="price f-34 col-m m-top10">{{item.shop_price}}</view>
+                    </view>
+                </view>
+            </navigator>
+        </view>
+    </view>
+    <view wx:else>
+        <view class="ectouch-notcont">
+            <view class="img">
+                <image mode="aspectFit" src="../../images/no_content.png"></image>
+            </view>
+            <text class="cont">亲，您还没有砍价商品</text>
+        </view>
+    </view>
+    <view class="dis-box commont-fixed-footer t-c">
+        <view class="box-flex li">
+            <navigator hoverClass="none" openType="redirect" url="../bargain/index">
+                <image mode="aspectFit" src="../../images/kan_home.png"></image>
+                <view class="f-24">砍价首页</view>
+            </navigator>
+        </view>
+        <view class="box-flex li">
+            <navigator hoverClass="none" openType="redirect" url="../bargain/list">
+                <image mode="aspectFit" src="../../images/bargain_list.png"></image>
+                <view class="f-24">砍价列表</view>
+            </navigator>
+        </view>
+        <view class="box-flex li">
+            <navigator hoverClass="none" openType="redirect" url="../bargain/order/index">
+                <image mode="aspectFit" src="../../images/user_order.png"></image>
+                <view class="f-24">砍价订单</view>
+            </navigator>
+        </view>
+        <view class="box-flex li active">
+            <image mode="aspectFit" src="../../images/user-active.png"></image>
+            <view class="f-24">参与的砍价</view>
+        </view>
+    </view>
+</view>
+<loading hidden="{{hidden}}">加载中…</loading>

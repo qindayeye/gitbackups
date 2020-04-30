@@ -1,0 +1,25 @@
+<view class="container">
+    <view class="common-header-xian"></view>
+    <scroll-view class="group-tab col-3" scrollLeft="{{scrollLeft}}" scrollX="true">
+        <view bindtap="swichNav" class="tab-item {{currentTab==item.id?'active':''}}" data-current="{{item.id}}" data-index="{{index}}" wx:for="{{list.category.data}}" wx:key="category">
+      {{item.cat_name}}
+    </view>
+    </scroll-view>
+    <view class="article-cont" style="margin-top:85rpx">
+        <navigator class="m-top20 b-f" hoverClass="none" openType="navigate" url="../article/detail?objectId={{item.id}}" wx:for="{{list.list}}" wx:key="list">
+            <view class="title cont-box f-30 col-3">{{item.title}}</view>
+            <view class="more-img dis-box" wx:if="{{item.img!=''}}">
+                <view class="box-felx li" wx:for="{{item.album}}" wx:key="imglist">
+                    <image class="" mode="aspectFit" src="{{item}}"></image>
+                </view>
+            </view>
+            <view class="footer-cont cont-box dis-box f-26 col-7 b-t">
+                <view>{{item.author!=''?item.author:'匿名用户'}}</view>
+                <view class="box-flex t-r">
+                    <text class="iconfont icon-time_icon"></text>{{item.amity_time}}
+          <text class="iconfont icon-tubiao_liulan"></text>{{item.likenum}}
+        </view>
+            </view>
+        </navigator>
+    </view>
+</view>

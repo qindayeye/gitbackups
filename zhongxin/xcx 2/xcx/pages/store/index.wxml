@@ -1,0 +1,266 @@
+<block wx:if="{{store_data!=undefined}}">
+    <view class="container">
+        <view class="store-header p-r">
+            <view class="store-cont"></view>
+            <view class="store-bg">
+                <image src="{{store_data.root_path}}{{store_cont.street_thumb}}"></image>
+            </view>
+            <view bindtap="storeDetail" class="cont dis-box">
+                <view class="left">
+                    <view class="store-img">
+                        <image src="{{store_cont.logo_thumb}}"></image>
+                    </view>
+                </view>
+                <view class="right">
+                    <text class="pl-12 store_name f-30 col-f ">{{store_data.detail.rz_shopName}}</text>
+                    <text class="f-24 col-f pl-12">已有<text class="col-m">{{store_num}}</text>人关注</text>
+                </view>
+            </view>
+            <view bindtap="onChangeShowAttention" class="store_attention_button">
+                <text class="f-24  button-cont active" wx:if="{{collect==='true'}}">
+                    <text class="iconfont icon-favorites f-22"></text> 已关注
+        </text>
+                <text class="f-24  button-cont" wx:else>
+                    <text class="iconfont icon-favorites f-22"></text> 关注
+        </text>
+            </view>
+        </view>
+        <view class="store_nav  dis-box b-f m-top20 b-b">
+            <view bindtap="toAll" class="box-flex-index t-c" data-index="is_on_sale" id="list-{{!hiddenAll?true:0}}">
+                <text class="iconfont icon-menu-product com-icon"></text>
+                <text>全部</text>
+            </view>
+            <view bindtap="toNew" class="box-flex-index t-c" data-index="store_new" id="list-{{!hiddenNew?true:0}}">
+                <text class="iconfont icon-z-new com-icon"></text>
+                <text>新品</text>
+            </view>
+            <view bindtap="toSale" class="box-flex-index t-c" data-index="is_promote" id="list-{{!hiddenSale?true:0}}">
+                <text class="iconfont icon-cuxiao com-icon"></text>
+                <text> 促销</text>
+            </view>
+        </view>
+        <view class="all" hidden="{{hiddenAll}}">
+            <view class="store_nav_cont  dis-box b-f  b-b">
+                <view bindtap="cascadePopup" class="box-flex t-c p-r" data-index="goods_id" id="list-{{!hiddenCateAll?true:0}}" wx:if="{{store_data.category!=''}}">
+                    <text>{{cateName}}<text class="iconfont icon-fenlei"></text>
+                    </text>
+                </view>
+                <view bindtap="toCateAll" class="box-flex t-c p-r" data-index="goods_id" id="list-{{!hiddenCateAll?true:0}}" wx:else>
+                    <text>全部</text>
+                </view>
+                <view bindtap="toSynthesize" class="box-flex t-c p-r" data-index="sort_order" id="list-{{!hiddenSynthesize?true:0}}">
+                    <text>综合</text>
+                </view>
+                <view bindtap="toNum" class="box-flex t-c p-r" data-index="sales_volume" id="list-{{!hiddenNum?true:0}}">
+                    <text> 销量</text>
+                </view>
+                <view bindtap="toPrice" class="box-flex t-c p-r" data-index="shop_price" id="list-{{!hiddenPrice?true:0}}">
+                    <text class="price"> 价格</text>
+                    <text class="iconfont icon-jiantou-copy tf-180 top_jiantou {{showTop?'':'active'}}"></text>
+                    <text class="iconfont icon-jiantou-copy bot_jiantou {{showBot?'':'active'}}"></text>
+                </view>
+            </view>
+            <view class="new" hidden="{{hiddenCateAll}}">
+                <view class="index-list m-top4">
+                    <view class="index-goods-list dis-flex">
+                        <view bindtap="siteDetail" class="flex-five list-box b-f" data-index="{{index}}" wx:for="{{store_goods}}" wx:key="store_goods">
+                            <image class="goodsImg" mode="aspectFit" src="{{item.goods_thumb}}"></image>
+                            <text class="title f-30 col-3 twolist-hidden">{{item.goods_name}}</text>
+                            <text class="price f-32 col-m">{{item.shop_price}}<text class="f-22 col-9 del">{{item.market_price}}</text>
+                            </text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="new" hidden="{{hiddenSynthesize}}">
+                <view wx:if="{{store_goods!=''}}">
+                    <scroll-view class="list" scrollY="true" style="height:{{scrollHeight}}px;">
+                        <view class="index-list m-top4">
+                            <view class="index-goods-list dis-flex">
+                                <view bindtap="siteDetail" class="flex-five list-box b-f" data-index="{{index}}" wx:for="{{store_goods}}" wx:key="store_goods">
+                                    <image class="goodsImg" mode="aspectFit" src="{{item.goods_thumb}}"></image>
+                                    <text class="title f-30 col-3 twolist-hidden">{{item.goods_name}}</text>
+                                    <text class="price f-32 col-m">{{item.shop_price}}<text class="f-22 col-9 del">{{item.market_price}}</text>
+                                    </text>
+                                </view>
+                            </view>
+                        </view>
+                    </scroll-view>
+                </view>
+                <view wx:else>
+                    <view class="ectouch-notcont">
+                        <view class="img">
+                            <image mode="aspectFit" src="../../images/no_content.png"></image>
+                        </view>
+                        <text class="cont">亲，没有商品哦</text>
+                    </view>
+                </view>
+            </view>
+            <view class="new" hidden="{{hiddenNum}}">
+                <view wx:if="{{store_goods!=''}}">
+                    <scroll-view class="list" scrollTop="{{scrollTop}}" scrollY="true" style="height:{{scrollHeight}}px;">
+                        <view class="index-list m-top4">
+                            <view class="index-goods-list dis-flex">
+                                <view bindtap="siteDetail" class="flex-five list-box b-f" data-index="{{index}}" wx:for="{{store_goods}}" wx:key="store_goods">
+                                    <image class="goodsImg" mode="aspectFit" src="{{item.goods_thumb}}"></image>
+                                    <text class="title f-30 col-3 twolist-hidden">{{item.goods_name}}</text>
+                                    <text class="price f-32 col-m">{{item.shop_price}}<text class="f-22 col-9 del">{{item.market_price}}</text>
+                                    </text>
+                                </view>
+                            </view>
+                        </view>
+                    </scroll-view>
+                </view>
+                <view wx:else>
+                    <view class="ectouch-notcont">
+                        <view class="img">
+                            <image mode="aspectFit" src="../../images/no_content.png"></image>
+                        </view>
+                        <text class="cont">亲，没有商品哦</text>
+                    </view>
+                </view>
+            </view>
+            <view class="new" hidden="{{hiddenPrice}}">
+                <view wx:if="{{store_goods!=''}}">
+                    <scroll-view class="list" scrollTop="{{scrollTop}}" scrollY="true" style="height:{{scrollHeight}}px;">
+                        <view class="index-list m-top4">
+                            <view class="index-goods-list dis-flex ">
+                                <view bindtap="siteDetail" class="flex-five list-box b-f" data-index="{{index}}" wx:for="{{store_goods}}" wx:key="store_goods">
+                                    <image class="goodsImg" mode="aspectFit" src="{{item.goods_thumb}}"></image>
+                                    <text class="title f-30 col-3 twolist-hidden">{{item.goods_name}}</text>
+                                    <text class="price f-32 col-m">{{item.shop_price}}<text class="f-22 col-9 del">{{item.market_price}}</text>
+                                    </text>
+                                </view>
+                            </view>
+                        </view>
+                    </scroll-view>
+                </view>
+                <view wx:else>
+                    <view class="ectouch-notcont">
+                        <view class="img">
+                            <image mode="aspectFit" src="../../images/no_content.png"></image>
+                        </view>
+                        <text class="cont">亲，没有商品哦</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="new" hidden="{{hiddenNew}}">
+            <view wx:if="{{store_goods!=''}}">
+                <view class="index-list m-top4">
+                    <view class="index-goods-list dis-flex">
+                        <view bindtap="siteDetail" class="flex-five list-box b-f" data-index="{{index}}" wx:for="{{store_goods}}" wx:key="store_goods">
+                            <image class="goodsImg" mode="aspectFit" src="{{item.goods_thumb}}"></image>
+                            <text class="title f-30 col-3 twolist-hidden">{{item.goods_name}}</text>
+                            <text class="price f-32 col-m">{{item.shop_price}}<text class="f-22 col-9 del">{{item.market_price}}</text>
+                            </text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view wx:else>
+                <view class="ectouch-notcont">
+                    <view class="img">
+                        <image mode="aspectFit" src="../../images/no_content.png"></image>
+                    </view>
+                    <text class="cont">亲，没有商品哦</text>
+                </view>
+            </view>
+        </view>
+        <view class="sale" hidden="{{hiddenSale}}">
+            <view wx:if="{{store_goods!=''}}">
+                <view class="index-list m-top4">
+                    <view class="index-goods-list dis-flex">
+                        <view bindtap="siteDetail" class="flex-five list-box b-f" data-index="{{index}}" wx:for="{{store_goods}}" wx:key="store_goods">
+                            <image class="goodsImg" mode="aspectFit" src="{{item.goods_thumb}}"></image>
+                            <text class="title f-30 col-3 twolist-hidden">{{item.goods_name}}</text>
+                            <text class="price f-32 col-m">{{item.shop_price}}<text class="f-22 col-9 del">{{item.market_price}}</text>
+                            </text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view wx:else>
+                <view class="ectouch-notcont">
+                    <view class="img">
+                        <image mode="aspectFit" src="../../images/no_content.png"></image>
+                    </view>
+                    <text class="cont">亲，没有商品哦</text>
+                </view>
+            </view>
+        </view>
+        <view class="cont-box" wx:if="{{store_goods!=''}}">
+            <text class="f-24 col-9  t-c">没有更多了</text>
+        </view>
+        <view animation="{{animationData}}" class="t_product_screen">
+            <view class="dis-box t-store-header">
+                <view bindtap="cascadeDismiss" class="box-flex">
+                    <text class="iconfont icon-mjiantou-copy"></text>
+                </view>
+                <view class="box-flex">
+                    <text class="f-24 t-c name">分类筛选</text>
+                </view>
+                <view bindtap="cascadeDismiss" class="box-flex">
+                    <text class="f-24 t-r name col-7">取消</text>
+                </view>
+            </view>
+            <scroll-view class="product_screen-box" scrollY="true" style="height:{{scrollHeight}}px">
+                <view class="cate_list">
+                    <radio-group bindchange="radioChange" class="radio-group">
+                        <label class="radio" wx:for="{{brandsCate}}" wx:key="brandsCate">
+                            <view bindtap="cascadeDismiss" class="list {{currentItem==item.cat_id?'active':''}}" data-id="{{item.cat_id}}">
+                                <view class="checked">
+                                    <text class="iconfont  icon-unif063"></text>
+                                </view>
+                                <radio checked="{{item.checked}}" hidden="true" name="{{item.cat_name}}" value="{{item.cat_name}}"></radio>
+                                <text class="name">{{item.cat_name}}</text>
+                            </view>
+                        </label>
+                    </radio-group>
+                </view>
+            </scroll-view>
+        </view>
+        <view class="f-28 col-3 viewshow  {{bottomloading}} " wx:if="{{bottomloading!=''}}">
+            <view class="dis-box">
+                <view class="loadEffect">
+                    <text></text>
+                    <text></text>
+                    <text></text>
+                    <text></text>
+                    <text></text>
+                    <text></text>
+                    <text></text>
+                    <text></text>
+                </view>
+                <view class="cont f-28 col-7">加载更多...</view>
+            </view>
+        </view>
+        <block wx:else>
+            <view class="title-footer p-r" wx:if="{{isListData==false&&viewBox==true}}">
+                <text class="f-24 col-9  cont">没有更多了</text>
+                <view class="hr"></view>
+            </view>
+        </block>
+    </view>
+    <view class="filter-menu {{nav_select?'active':''}}">
+        <view class="filter-menu-list ts-5">
+            <custom-ul>
+                <custom-li bindtap="nav" data-index="home">
+                    <text class="iconfont icon-home"></text>
+                </custom-li>
+                <custom-li bindtap="nav" data-index="fenlei">
+                    <text class="iconfont icon-fenlei"></text>
+                </custom-li>
+                <custom-li bindtap="nav" data-index="cart">
+                    <text class="iconfont icon-cart"></text>
+                </custom-li>
+                <custom-li bindtap="nav" data-index="profile">
+                    <text class="iconfont icon-profile"></text>
+                </custom-li>
+                <custom-li class="w"></custom-li>
+            </custom-ul>
+        </view>
+        <view bindtap="commonNav" class="filter-menu-title"></view>
+    </view>
+</block>
+<loading hidden="{{hidden}}" wx:else>加载中…</loading>

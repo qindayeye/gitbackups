@@ -1,0 +1,65 @@
+<view class="container p-bottom">
+    <view class="common-header-xian"></view>
+    <view class=" goods-detail-box">
+        <view class="header f-28 col-3 dis-box">
+            <view catchtap="bindHeaderTap" class="box-flex {{current==0?'active':''}}" data-index="0">热门</view>
+            <view bindtap="bindHeaderTap" class="box-flex {{current==1?'active':''}}" data-index="1">新品</view>
+            <view bindtap="bindHeaderTap" class="box-flex {{current==2?'active':''}}" data-index="2">优选</view>
+        </view>
+        <view class="bargain-commont-bg hide{{showViewNav?'show':''}}"></view>
+        <scroll-view bindscrolltolower="bindDownLoad" scrollY="true" style="height:{{scrollHeight}}px;">
+            <view class="wrapper" wx:if="{{orders!=''}}">
+                <view class="group-list">
+                    <view class=" b-f item m-top20" wx:for="{{orders}}" wx:key="{{index}}">
+                        <view bindtap="siteDetail" class=" dis-box  cont-box" data-index="{{index}}">
+                            <view class="user-left p-r">
+                                <image class="group-rank" mode="aspectFit" src="../../images/rank-1.png" wx:if="{{item.key=='1'}}"></image>
+                                <image class="group-rank" mode="aspectFit" src="../../images/rank-2.png" wx:if="{{item.key=='2'}}"></image>
+                                <image class="group-rank" mode="aspectFit" src="../../images/rank-3.png" wx:if="{{item.key=='3'}}"></image>
+                                <image class="goodsImg" mode="aspectFit" src="{{item.goods_thumb}}"></image>
+                            </view>
+                            <view class="box-flex-name user-right p-r">
+                                <text class="f-30 col-3 onelist-hidden">{{item.goods_name}}</text>
+                                <view class="col-m f-32">
+                                    <text class="col-7 f-26" style="padding:0">已有{{item.team_num}}人团</text>
+                                    <view class="group-price">{{item.team_price}}</view>
+                                </view>
+                                <view class="grop-rank-box dis-box">
+                                    <view class="box-flex-group left f-28 col-m">{{item.team_num}}人团</view>
+                                    <view class="box-flex-group right f-28">去开团</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view wx:else>
+                <view class="ectouch-notcont">
+                    <view class="img">
+                        <image mode="aspectFit" src="../../images/no_content.png"></image>
+                    </view>
+                    <text class="cont">亲，您还没有订单信息哦！</text>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="commont-fixed-footer t-c dis-box ">
+        <view class="box-flex li">
+            <navigator hoverClass="none" openType="redirect" url="../group/index">
+                <image mode="aspectFit" src="../../images/nav_group.png"></image>
+                <view class="f-22">拼团首页</view>
+            </navigator>
+        </view>
+        <view class="box-flex li active">
+            <image mode="aspectFit" src="../../images/rank-active.png"></image>
+            <view class="f-22">排行</view>
+        </view>
+        <view class="box-flex li">
+            <navigator hoverClass="none" openType="redirect" url="../group/order/index">
+                <image mode="aspectFit" src="../../images/user.png"></image>
+                <view class="f-22">我的拼团</view>
+            </navigator>
+        </view>
+    </view>
+</view>
+<loading hidden="{{hidden}}">加载中…</loading>

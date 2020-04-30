@@ -1,0 +1,11 @@
+<view class="container">
+    <view class="common-header-xian"></view>
+    <view class="article-detail b-f cont-box">
+        <view class="title f-30 col-3">{{detail.title}}</view>
+        <view class="f-24 col-7 m-top10">{{detail.amity_time}}
+      <text class="admin">{{detail.admin}}</text>
+        </view>
+        <view class="f-28 col-6 cont">{{detail.cont}}
+    </view>
+    </view>
+</view>

@@ -1,0 +1,38 @@
+<view class="container" wx:if="{{cateData!=''}}">
+    <view class="common-header-xian"></view>
+    <view class="common-search-box b-f">
+        <navigator class="common-search " hoverClass="none" openType="navigate" url="../search/index">
+            <view class="search t-c">
+                <icon class="text-center" color="{{searchColor}}" size="{{searchSize}}" type="search"></icon>
+                <text>{{searchName}}</text>
+            </view>
+        </navigator>
+    </view>
+    <view class="cate-content">
+        <scroll-view class="left" scrollY="true">
+            <text bindtap="selectNav" class="type-nav {{curNav==item.id?'selected':''}}" data-id="{{item.id}}" data-index="{{index}}" wx:for="{{cateData}}" wx:key="cateData">{{item.name}}</text>
+        </scroll-view>
+        <scroll-view class="right b-f" scrollTop="{{scrollTop}}" scrollY="true">
+            <view class="cont">
+                <view class="box">
+                    <block wx:for="{{cateData[curIndex].cat_id}}" wx:for-index="attr_id" wx:key="cateData">
+                        <navigator hoverClass="none" url="../category/product_list?id={{item.id}}&name={{item.name}}">
+                            <text class="title">{{item.name}}</text>
+                        </navigator>
+                        <view class="content dis-flex">
+                            <view class="flex-three" data-list="{{index}}" wx:for="{{item.cat_id}}" wx:for-index="attr_id_child" wx:key="cit">
+                                <navigator hoverClass="none" url="../category/product_list?id={{item.id}}&name={{item.name}}">
+                                    <view class="img" id="{{item.id}}">
+                                        <image src="{{item.cat_img}}"></image>
+                                    </view>
+                                    <text>{{item.name}}</text>
+                                </navigator>
+                            </view>
+                        </view>
+                    </block>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+<loading hidden="{{hidden}}" wx:else>加载中…</loading>

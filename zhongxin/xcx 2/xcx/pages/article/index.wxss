@@ -1,0 +1,29 @@
+.article-cont .cont-img {
+    width: 750rpx;
+    height: 240rpx;
+}
+
+.article-cont .cont-img image {
+    width: 100%;
+    height: 100%;
+}
+
+.article-cont .more-img .li {
+    width: 250rpx;
+    height: 250rpx;
+}
+
+.article-cont .more-img .li image {
+    width: 100%;
+    height: 100%;
+}
+
+.article-cont .footer-cont .icon-time_icon {
+    padding-right: 10rpx;
+    font-size: 24rpx;
+}
+
+.article-cont .footer-cont .icon-tubiao_liulan {
+    padding: 0 10rpx 0 20px;
+    font-size: 28rpx;
+}
